@@ -1,0 +1,13 @@
+config:
+  target: "https://automationexercise.com"
+
+  phases:
+    - duration: 30
+      arrivalRate: 5
+
+scenarios:
+  - name: Homepage Load Test
+
+    flow:
+      - get:
+          url: "/"
