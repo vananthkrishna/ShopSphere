@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "Node16",
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "types": [
       "node",
       "@playwright/test"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

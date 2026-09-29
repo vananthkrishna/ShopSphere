@@ -21,7 +21,7 @@ test('Complete user registration', async({page})=>{
   user.email
  );
 
- await account.fillAccountForm();
+ await account.fillAccountForm(user.password);
 
  await account.verifyAccountCreated();
 

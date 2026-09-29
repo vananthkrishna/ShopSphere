@@ -25,6 +25,14 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: TypeScript type check
+        run: npm run typecheck
+
+      - name: Run BDD tests
+        env:
+          BASE_URL: https://automationexercise.com
+        run: npm run test:bdd
+
       - name: Run Playwright tests
         env:
           BASE_URL: https://automationexercise.com

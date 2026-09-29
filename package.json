@@ -7,7 +7,8 @@
     "test": "playwright test",
     "test:ui": "playwright test tests/ui",
     "test:api": "playwright test tests/api",
-    "test:bdd": "playwright test tests/bdd",
+    "test:bdd": "cucumber-js",
+    "typecheck": "tsc --noEmit",
     "load": "artillery run artillery/load.yml",
     "report": "playwright show-report"
   },
@@ -16,13 +17,14 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.3",
     "artillery": "^2.0.34",
     "dotenv": "^18.0.4",
     "eslint": "^10.11.0",
     "prettier": "^3.9.9",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }

@@ -27,11 +27,11 @@ export class AccountInfoPage extends BasePage {
 
   createButton = '[data-qa="create-account"]';
 
-  async fillAccountForm() {
+  async fillAccountForm(password: string) {
 
     await this.page.check(this.titleMr);
 
-    await this.page.fill(this.password,'Password123');
+    await this.page.fill(this.password, password);
 
     await this.page.selectOption(this.day,'10');
     await this.page.selectOption(this.month,'5');

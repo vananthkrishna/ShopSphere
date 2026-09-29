@@ -12,4 +12,6 @@ test('Products API returns 200', async ({ request }) => {
 
   expect(body.products).toBeDefined();
   expect(body.products.length).toBeGreaterThan(0);
+  expect(body.products[0]).toHaveProperty('id');
+  expect(body.products[0]).toHaveProperty('name');
 });
