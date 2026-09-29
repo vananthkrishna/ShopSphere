@@ -25,3 +25,12 @@ npm run test:api
 ```bash
 npm run load
 ```
+
+## Project Features
+
+- UI Automation with Playwright
+- REST API Testing
+- Dynamic User Creation
+- Page Object Model
+- HTML Reporting
+- TypeScript Framework

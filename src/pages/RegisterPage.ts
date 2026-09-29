@@ -2,23 +2,35 @@ import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class RegisterPage extends BasePage {
+
   constructor(page: Page) {
     super(page);
   }
 
-  private loginSignup = 'a[href="/login"]';
-  private nameInput = '[data-qa="signup-name"]';
-  private emailInput = '[data-qa="signup-email"]';
-  private signupButton = '[data-qa="signup-button"]';
+  signupLogin='a[href="/login"]';
 
-  async open() {
+  name='[data-qa="signup-name"]';
+
+  email='[data-qa="signup-email"]';
+
+  signup='[data-qa="signup-button"]';
+
+  async open(){
+
     await this.visit('/');
-    await this.click(this.loginSignup);
+
+    await this.click(this.signupLogin);
+
   }
 
-  async startSignup(name: string, email: string) {
-    await this.type(this.nameInput, name);
-    await this.type(this.emailInput, email);
-    await this.click(this.signupButton);
+  async signupUser(name:string,email:string){
+
+    await this.type(this.name,name);
+
+    await this.type(this.email,email);
+
+    await this.click(this.signup);
+
   }
+
 }

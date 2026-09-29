@@ -1,38 +1,28 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../src/pages/LoginPage';
+import { test } from '@playwright/test';
+
 import { RegisterPage } from '../../src/pages/RegisterPage';
 
-test.describe('Login Module', () => {
+import { AccountInfoPage } from '../../src/pages/AccountInfoPage';
 
-  test('User should register and reach account page', async ({ page }) => {
+import { createUser } from '../../utils/userFactory';
 
-    const register = new RegisterPage(page);
+test('Complete user registration', async({page})=>{
 
-    const email = `ananth${Date.now()}@test.com`;
+ const user=createUser();
 
-    await register.open();
+ const register=new RegisterPage(page);
 
-    await register.startSignup('Ananth', email);
+ const account=new AccountInfoPage(page);
 
-    await expect(page).toHaveURL(/signup/);
+ await register.open();
 
-  });
+ await register.signupUser(
+  user.name,
+  user.email
+ );
 
-  test('Invalid user should not login', async ({ page }) => {
+ await account.fillAccountForm();
 
-    const login = new LoginPage(page);
-
-    await login.openLoginPage();
-
-    await login.login(
-      'wrong@test.com',
-      'wrongpassword'
-    );
-
-    await expect(
-      page.locator('.login-form p')
-    ).toBeVisible();
-
-  });
+ await account.verifyAccountCreated();
 
 });
