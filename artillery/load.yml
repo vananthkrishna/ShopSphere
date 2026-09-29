@@ -5,9 +5,21 @@ config:
     - duration: 30
       arrivalRate: 5
 
+    - duration: 30
+      arrivalRate: 15
+
+    - duration: 30
+      arrivalRate: 25
+
 scenarios:
-  - name: Homepage Load Test
+  - name: Browse Products
 
     flow:
       - get:
           url: "/"
+
+      - get:
+          url: "/products"
+
+      - get:
+          url: "/view_cart"
