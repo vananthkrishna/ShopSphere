@@ -13,7 +13,6 @@ export class CartPage extends BasePage {
   }
 
   async verifyProduct(product: string) {
-    await expect(this.page.locator('#cart_info'))
-      .toContainText(product);
+    await expect(this.page.locator('#cart_info')).toContainText(product);
   }
 }

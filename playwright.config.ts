@@ -20,10 +20,7 @@ export default defineConfig({
     trace: 'on-first-retry'
   },
 
-  reporter: [
-    ['list'],
-    ['html', { open: 'never' }]
-  ],
+  reporter: [['list'], ['html', { open: 'never' }]],
 
   projects: [
     {

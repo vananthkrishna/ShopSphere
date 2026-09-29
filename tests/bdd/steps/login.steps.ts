@@ -1,11 +1,4 @@
-import {
-  Given,
-  When,
-  Then,
-  Before,
-  After,
-  setDefaultTimeout
-} from '@cucumber/cucumber';
+import { Given, When, Then, Before, After, setDefaultTimeout } from '@cucumber/cucumber';
 
 import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
@@ -28,81 +21,44 @@ After(async function (this: CustomWorld) {
   await this.closeBrowser();
 });
 
-Given(
-  'the user opens the login page',
-  { timeout: 30000 },
-  async function (this: CustomWorld) {
+Given('the user opens the login page', { timeout: 30000 }, async function (this: CustomWorld) {
+  user = createUser();
 
-    
+  const registerPage = new RegisterPage(this.page);
 
-    user = createUser();
+  await registerPage.open();
 
-    const registerPage = new RegisterPage(this.page);
+  await registerPage.signupUser(user.name, user.email);
 
-    
+  const accountPage = new AccountInfoPage(this.page);
 
-    await registerPage.open();
+  await accountPage.fillAccountForm(user.password);
 
-    
+  // Account creation automatically logs the user in.
+  // Logout before testing the login flow.
+  await this.page.goto('/');
 
-    await registerPage.signupUser(
-      user.name,
-      user.email
-    );
+  await this.page.locator('a[href="/logout"]').click();
 
-    
+  const loginPage = new LoginPage(this.page);
 
-    const accountPage = new AccountInfoPage(this.page);
+  await loginPage.openLoginPage();
 
-    await accountPage.fillAccountForm(user.password);
-
-    
-
-    // Account creation automatically logs the user in.
-    // Logout before testing the login flow.
-    await this.page.goto('/');
-
-    
-
-    await this.page.locator('a[href="/logout"]').click();
-
-    
-
-    const loginPage = new LoginPage(this.page);
-
-    await loginPage.openLoginPage();
-
-    
-
-    await expect(
-      this.page.locator('[data-qa="login-email"]')
-    ).toBeVisible();
-
-    
-  }
-);
+  await expect(this.page.locator('[data-qa="login-email"]')).toBeVisible();
+});
 
 When(
   'the user enters valid login credentials',
   { timeout: 30000 },
   async function (this: CustomWorld) {
-
     const loginPage = new LoginPage(this.page);
 
-    await loginPage.login(
-      user.email,
-      user.password
-    );
+    await loginPage.login(user.email, user.password);
   }
 );
 
-Then(
-  'the logout button should be visible',
-  { timeout: 30000 },
-  async function (this: CustomWorld) {
+Then('the logout button should be visible', { timeout: 30000 }, async function (this: CustomWorld) {
+  const loginPage = new LoginPage(this.page);
 
-    const loginPage = new LoginPage(this.page);
-
-    await loginPage.verifyLoginSuccess();
-  }
-);
+  await loginPage.verifyLoginSuccess();
+});

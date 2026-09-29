@@ -6,23 +6,18 @@ import { AccountInfoPage } from '../../src/pages/AccountInfoPage';
 
 import { createUser } from '../../utils/userFactory';
 
-test('Complete user registration', async({page})=>{
+test('Complete user registration', async ({ page }) => {
+  const user = createUser();
 
- const user=createUser();
+  const register = new RegisterPage(page);
 
- const register=new RegisterPage(page);
+  const account = new AccountInfoPage(page);
 
- const account=new AccountInfoPage(page);
+  await register.open();
 
- await register.open();
+  await register.signupUser(user.name, user.email);
 
- await register.signupUser(
-  user.name,
-  user.email
- );
+  await account.fillAccountForm(user.password);
 
- await account.fillAccountForm(user.password);
-
- await account.verifyAccountCreated();
-
+  await account.verifyAccountCreated();
 });

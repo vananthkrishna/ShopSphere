@@ -6,10 +6,7 @@ test('Invalid login credentials show error message', async ({ page }) => {
 
   await loginPage.openLoginPage();
 
-  await loginPage.login(
-    'invalid@test.com',
-    'WrongPassword123'
-  );
+  await loginPage.login('invalid@test.com', 'WrongPassword123');
 
   await expect(
     page.getByText('Your email or password is incorrect!', { exact: true })

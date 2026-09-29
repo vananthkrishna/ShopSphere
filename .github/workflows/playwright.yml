@@ -28,6 +28,12 @@ jobs:
       - name: TypeScript type check
         run: npm run typecheck
 
+      - name: ESLint
+        run: npm run lint
+
+      - name: Prettier format check
+        run: npm run format:check
+
       - name: Run BDD tests
         env:
           BASE_URL: https://automationexercise.com

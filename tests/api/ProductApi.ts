@@ -1,15 +1,9 @@
 import { APIRequestContext } from '@playwright/test';
 
-export class ProductApi{
+export class ProductApi {
+  constructor(private request: APIRequestContext) {}
 
- constructor(private request:APIRequestContext){}
-
- async getProducts(){
-
-  return this.request.get(
-   'https://automationexercise.com/api/productsList'
-  );
-
- }
-
+  async getProducts() {
+    return this.request.get('https://automationexercise.com/api/productsList');
+  }
 }

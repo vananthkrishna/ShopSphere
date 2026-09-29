@@ -91,12 +91,12 @@ ShopSphere/
 
 The Playwright UI suite currently covers:
 
-* Homepage validation
-* User registration
-* Account creation
-* Product search
-* Data-driven product searches
-* Invalid login validation
+- Homepage validation
+- User registration
+- Account creation
+- Product search
+- Data-driven product searches
+- Invalid login validation
 
 The UI tests use the **Page Object Model** to separate test scenarios from browser interaction logic.
 
@@ -114,11 +114,11 @@ https://automationexercise.com/api/productsList
 
 The test verifies:
 
-* HTTP status code
-* Presence of the product collection
-* Non-empty product response
-* Product `id`
-* Product `name`
+- HTTP status code
+- Presence of the product collection
+- Non-empty product response
+- Product `id`
+- Product `name`
 
 ---
 
@@ -140,11 +140,11 @@ Valid user login
 
 The BDD implementation uses:
 
-* Cucumber feature files
-* Step definitions
-* A custom Cucumber World
-* Playwright browser/context/page management
-* Existing Page Object classes
+- Cucumber feature files
+- Step definitions
+- A custom Cucumber World
+- Playwright browser/context/page management
+- Existing Page Object classes
 
 Run the BDD suite with:
 
@@ -176,11 +176,11 @@ BasePage
 
 This architecture helps provide:
 
-* Separation of concerns
-* Reusable page interactions
-* Centralized locators
-* Improved test readability
-* Easier maintenance
+- Separation of concerns
+- Reusable page interactions
+- Centralized locators
+- Improved test readability
+- Easier maintenance
 
 ---
 
@@ -195,11 +195,7 @@ test-data/products.json
 Current test data:
 
 ```json
-[
-  { "name": "Blue Top" },
-  { "name": "Men Tshirt" },
-  { "name": "Sleeveless Dress" }
-]
+[{ "name": "Blue Top" }, { "name": "Men Tshirt" }, { "name": "Sleeveless Dress" }]
 ```
 
 The test dynamically creates a Playwright test for each product.
@@ -248,9 +244,9 @@ This demonstrates validation of expected application behavior for invalid input 
 
 Playwright is configured to execute the test suite against:
 
-* Chromium
-* Firefox
-* WebKit
+- Chromium
+- Firefox
+- WebKit
 
 The configured browsers are defined in:
 
@@ -444,11 +440,11 @@ npm run report
 
 Playwright is configured with:
 
-* List reporter
-* HTML reporter
-* Screenshots on failure
-* Video retention on failure
-* Trace collection on first retry
+- List reporter
+- HTML reporter
+- Screenshots on failure
+- Video retention on failure
+- Trace collection on first retry
 
 The HTML report can be opened locally with:
 
@@ -472,8 +468,8 @@ Workflow:
 
 The workflow runs on:
 
-* Pushes to `main`
-* Pull requests
+- Pushes to `main`
+- Pull requests
 
 The pipeline performs:
 
@@ -544,27 +540,27 @@ The BDD suite is executed separately through Cucumber:
 
 ShopSphere demonstrates:
 
-* TypeScript-based test automation
-* Page Object Model
-* UI automation
-* API testing
-* Positive testing
-* Negative testing
-* Data-driven testing
-* Dynamic test data generation
-* BDD with Cucumber
-* Cross-browser testing
-* Environment-based configuration
-* TypeScript type checking
-* Test isolation
-* HTML test reporting
-* Failure screenshots
-* Failure video capture
-* Trace collection
-* Performance testing
-* Dockerized execution
-* GitHub Actions CI/CD
-* Git-based development workflow
+- TypeScript-based test automation
+- Page Object Model
+- UI automation
+- API testing
+- Positive testing
+- Negative testing
+- Data-driven testing
+- Dynamic test data generation
+- BDD with Cucumber
+- Cross-browser testing
+- Environment-based configuration
+- TypeScript type checking
+- Test isolation
+- HTML test reporting
+- Failure screenshots
+- Failure video capture
+- Trace collection
+- Performance testing
+- Dockerized execution
+- GitHub Actions CI/CD
+- Git-based development workflow
 
 ---
 
@@ -598,18 +594,18 @@ The project is intended as a portfolio demonstration of SDET automation practice
 
 Potential future enhancements include:
 
-* Authentication fixtures
-* Expanded API service layer
-* Additional API contract validation
-* More negative UI scenarios
-* Accessibility testing
-* Advanced Artillery scenarios
-* Allure reporting
-* Test tagging and selective execution
-* Database validation
-* CI notifications
-* Additional application workflows
-* Expanded BDD feature coverage
+- Authentication fixtures
+- Expanded API service layer
+- Additional API contract validation
+- More negative UI scenarios
+- Accessibility testing
+- Advanced Artillery scenarios
+- Allure reporting
+- Test tagging and selective execution
+- Database validation
+- CI notifications
+- Additional application workflows
+- Expanded BDD feature coverage
 
 ````
 

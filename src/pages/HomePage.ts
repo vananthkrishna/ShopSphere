@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
 
 export class HomePage {
-
   constructor(private page: Page) {}
 
   products = 'a[href="/products"]';
@@ -18,5 +17,4 @@ export class HomePage {
   async openCart() {
     await this.page.click(this.cart);
   }
-
 }

@@ -20,8 +20,7 @@ export class ProductPage extends BasePage {
   }
 
   async verifyResults(product: string) {
-    await expect(this.page.locator('.features_items'))
-      .toContainText(product);
+    await expect(this.page.locator('.features_items')).toContainText(product);
   }
 
   async addFirstItem() {

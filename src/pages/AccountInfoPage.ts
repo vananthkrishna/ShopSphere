@@ -2,7 +2,6 @@ import { Page, expect } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class AccountInfoPage extends BasePage {
-
   constructor(page: Page) {
     super(page);
   }
@@ -28,38 +27,40 @@ export class AccountInfoPage extends BasePage {
   createButton = '[data-qa="create-account"]';
 
   async fillAccountForm(password: string) {
-
     await this.page.check(this.titleMr);
 
     await this.page.fill(this.password, password);
 
-    await this.page.selectOption(this.day,'10');
-    await this.page.selectOption(this.month,'5');
-    await this.page.selectOption(this.year,'1998');
+    await this.page.selectOption(this.day, '10');
+    await this.page.selectOption(this.month, '5');
+    await this.page.selectOption(this.year, '1998');
 
-    await this.page.fill(this.firstName,'Ananth');
-    await this.page.fill(this.lastName,'V');
-    await this.page.fill(this.company,'OpenAI');
+    await this.page.fill(this.firstName, 'Ananth');
+    await this.page.fill(this.lastName, 'V');
+    await this.page.fill(this.company, 'OpenAI');
 
-    await this.page.fill(this.address,'123 Test Street');
+    await this.page.fill(this.address, '123 Test Street');
 
-    await this.page.selectOption(this.country,'United States');
+    await this.page.selectOption(this.country, 'United States');
 
-    await this.page.fill(this.state,'Illinois');
-    await this.page.fill(this.city,'Chicago');
-    await this.page.fill(this.zipcode,'60616');
-    await this.page.fill(this.mobile,'3125551234');
+    await this.page.fill(this.state, 'Illinois');
+    await this.page.fill(this.city, 'Chicago');
+    await this.page.fill(this.zipcode, '60616');
+    await this.page.fill(this.mobile, '3125551234');
 
-    await this.page.click(this.createButton);
+    const createAccountButton = this.page.locator(this.createButton);
 
+    await createAccountButton.waitFor({
+      state: 'visible',
+      timeout: 10000
+    });
+
+    await expect(createAccountButton).toBeEnabled();
+
+    await createAccountButton.click();
   }
 
   async verifyAccountCreated() {
-
-    await expect(
-      this.page.locator('h2[data-qa="account-created"]')
-    ).toBeVisible();
-
+    await expect(this.page.locator('h2[data-qa="account-created"]')).toBeVisible();
   }
-
 }

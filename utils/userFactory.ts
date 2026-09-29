@@ -1,15 +1,11 @@
-export function createUser(){
+export function createUser() {
+  const timestamp = Date.now();
 
-  const timestamp=Date.now();
+  return {
+    name: 'Ananth',
 
-  return{
+    email: `ananth${timestamp}@test.com`,
 
-    name:'Ananth',
-
-    email:`ananth${timestamp}@test.com`,
-
-    password:'Password123'
-
+    password: 'Password123'
   };
-
 }

@@ -1,5 +1,5 @@
 config:
-  target: "https://automationexercise.com"
+  target: 'https://automationexercise.com'
 
   phases:
     - duration: 30
@@ -16,10 +16,10 @@ scenarios:
 
     flow:
       - get:
-          url: "/"
+          url: '/'
 
       - get:
-          url: "/products"
+          url: '/products'
 
       - get:
-          url: "/view_cart"
+          url: '/view_cart'
